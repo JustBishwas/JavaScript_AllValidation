@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form</title>
+</head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@800&display=swap" rel="stylesheet"> 
+ <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet"> 
+<style>
+	*{
+		padding: 0;
+		color: white;
+	}
+	body
+	{
+		background-image: url("6.jpg");
+		 background-attachment: fixed;
+  		background-repeat: no-repeat;
+  		background-size: cover;
+	}
+	.container
+	{
+  		background-size: cover;
+  		width: 100%;
+  		padding: 15px;
+  		background-color: rgba(0,0,0,0.8);
+  		margin-bottom: 2%;
+  		margin-top: 2%;
+	}
+	#main
+	{
+ 
+  		margin-bottom: 2%;
+	}
+	#main h1
+	{
+		color: white;
+		text-align: center;
+	font-family: 'Lobster', cursive;
+		font-size: 55px;
+		margin: 5% 0%;
+	}
+	label{
+		text-align: center;
+		font-size: 22px;
+		color: white;
+	}
+	label input{
+		border-radius: 2px solid ;
+		margin: 5px;
+		background-color: rgba(0,0,0,0.2);
+		color: #b5bff7;
+	}
+	form
+	{
+		padding: 5px;
+	}
+	form input{
+		text-align: left;
+	}
+	form button{
+		padding: 7px;
+		border-radius: 2px 5px;
+		margin-top: 2%;
+		background-color: #eea2dc;
+	}
+	form button:hover{
+		color: white;
+		background-color: #3b74b7;
+	}
+	#label2{
+		padding: 5px;
+	}
+	#label2 label{
+
+	}
+	 h2{
+	color: white;
+	 font-family: 'Mukta', sans-serif;
+	}
+	 h1{
+	color: white;
+	 font-family: 'Mukta', sans-serif;
+	}
+	#userfield{
+		font-family: 'Mukta', sans-serif;
+		color: white;
+		text-align:center;
+	}
+	#emailfield{
+		font-family: 'Mukta', sans-serif;
+		color: white;
+		text-align:center;
+			}
+
+	.glow {
+  font-size: 80px;
+  color: #fff;
+  text-align: center;
+}
+</style>
+<body>
+			<div class="container">
+			<div id="main">
+		<h1 class="glow">Please Do Fill Up The Form</h1>
+	</div>
+			<div class="row">
+    			<div class="col col-lg-6">
+    				<div id="label2">
+    				<label>Enter an subscribtion Email:<input type="email" name="subs" id="label3"></label>
+    				</div>
+    				<h2 id="userfield" style="color:red;"></h2><br>
+    				<h2 id="emailfield" style="color:red;"></h2><br>
+    			</div>
+    			<div class="col col-lg-6">
+    						<form>
+    					<label for="name">USERNAME<input type="text" name="name" placeholder="Enter your username" onchange="validate()" id="myuser"></label>
+    					<label>EMAIL<input type="email" name="eemail" placeholder="Enter your Email" id="validatemail" onchange="emailvalidate()"></label>
+    					<label>PASSWORD<input type="password" name="password" id="pass1" placeholder="Enter your password"></label>
+    					<label>RE:PASSWORD<input type="password" name="password" id="pass2" placeholder="RE:Enter your password" onchange="passwordvalid()"></label>
+    					<label for="date">DATE OF BIRTH<input type="date" value="date" name="date"></label>
+    					<label>CHANNEL LINK<input type="URL" name="link" placeholder="Enter your URL"></label><br>
+    					<label style="margin-right:2%;">Gender:</label>
+    					<label for="male">MALE</label>
+    					<input type="radio" name="Gender" value="male">
+    					<label for="female">FEMALE</label>
+    					<input type="radio" name="Gender" value="female">
+    					<label>Do you wish to subscribe!?<input type="checkbox" name="Subscribe" id="sub" onchange="subscribe()" value="true"></label><br>
+    					<label for="submit"><button name="submit" value="submit" onclick="return subscribe()">SUBMIT</button></label>	
+    				</form>
+    			</div>
+
+  	</div>
+  </div>
+  <script type="text/javascript">
+  	 	function passwordvalid(){
+	var pass1 = document.getElementById('pass1');
+	var pass2 = document.getElementById('pass2');
+	
+	if(pass1.value != pass2.value)
+		alert("Password didnot match!!");
+}
+</script>
+<script type="text/javascript">
+function subscribe(){
+	if (document.getElementById('sub').checked) {
+		document.getElementById('label2').style.display = "inline";
+		document.getElementById('label3').setAttribute = ("required",true);
+	}
+	else
+	{
+		document.getElementById('label3').removeAttribute = ("required");
+		document.getElementById('label2').style.display = "none";
+	}
+}
+</script>
+<script type="text/javascript">
+function validate(){
+		var user = document.getElementById('myuser');
+		if (user.value == "") {
+		document.getElementById('userfield').innerHTML = "Username is not supposed to be empty";
+		}
+		else if(user.value.length < 8)
+		{
+			document.getElementById('userfield').innerHTML = "Username should be atleast 8 character long";
+		}
+		else if(!isNaN(user))
+		{
+			document.getElementById('userfield').innerHTML = "Please Enter Only Characters";
+		}
+		       else if(/[^a-zA-Z0-9_]/.test(username.value))
+	
+            {
+                document.getElementById('userfield').innerHTML="You are only allowed to use letter and numbers";
+            }
+	}
+</script>
+<script type="text/javascript">
+	function emailvalidate(){
+		var mail = document.getElementById('validatemail');
+		if (mail.value == "") {
+			document.getElementById('emailfield').innerHTML = "Please enter your email";
+		}
+		else if(/^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/.test(mail.value))
+		{
+		document.getElementById('emailfield').innerHTML = "valid";
+		}
+		else
+		{
+	document.getElementById('emailfield').innerHTML = "Please enter a valid email";
+		}
+	}
+  </script>
+</body>
+</html>
